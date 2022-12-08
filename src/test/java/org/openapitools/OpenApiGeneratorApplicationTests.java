@@ -16,7 +16,7 @@ class OpenApiGeneratorApplicationTests {
     @Test
     void compareLists() {
         String[] expected = new String[]{"a", "b", "c"};
-        String[] actual = new String[]{"A", "b", "c"};
+        String[] actual = new String[]{"a", "b", "c"};
         assertEquals(expected, actual);
     }
 

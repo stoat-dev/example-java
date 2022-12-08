@@ -1,0 +1,39 @@
+rootProject.name = 'example-java'
+
+gradleEnterprise {
+    buildScan {
+        termsOfServiceUrl = "https://gradle.com/terms-of-service"
+        termsOfServiceAgree = "yes"
+    }
+}
+
+// output build scan url to folder
+gradle.addBuildListener(new BuildAdapter(){
+    @Override
+    void settingsEvaluated(Settings settings) {
+        super.settingsEvaluated(settings)
+
+        File file = new File("build/gradle-scan/index.html")
+
+        new File(file.getParent()).mkdirs()
+
+        if (settings.pluginManager.hasPlugin("com.gradle.enterprise")) {
+            settings.extensions["gradleEnterprise"].buildScan.with {
+                buildScanPublished { buildScan ->
+                    file.write """
+                            <!DOCTYPE html>
+                            <html>
+                              <head>
+                                <meta http-equiv="refresh" content="0; url='${buildScan.buildScanUri.toASCIIString()}'" />
+                              </head>
+                              <body>
+                                <p>Please follow <a href="${buildScan.buildScanUri.toASCIIString()}">this link to go to the build scan</a>.</p>
+                              </body>
+                            </html>\n"""
+                }
+            }
+        } else {
+            file.delete()
+        }
+    }
+})

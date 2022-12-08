@@ -1,0 +1,117 @@
+plugins {
+    id 'java'
+    id 'maven-publish'
+    id 'checkstyle'
+    id 'project-report'
+    id 'pmd'
+    id 'jacoco'
+    id "com.github.spotbugs" version "5.0.13"
+    id 'org.hidetake.swagger.generator' version '2.19.2'
+}
+
+repositories {
+    mavenLocal()
+    maven {
+        url = uri('https://repo.maven.apache.org/maven2/')
+    }
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web:2.5.14'
+    implementation 'org.springframework.data:spring-data-commons:2.5.11'
+    implementation 'io.springfox:springfox-swagger2:2.9.2'
+    implementation 'org.webjars:swagger-ui:4.10.3'
+    implementation 'org.webjars:webjars-locator-core:0.46'
+    implementation 'com.google.code.findbugs:jsr305:3.0.2'
+    implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.12.6'
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.12.6'
+    implementation 'org.openapitools:jackson-databind-nullable:0.2.2'
+    implementation 'org.springframework.boot:spring-boot-starter-validation:2.5.14'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.12.6.1'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test:2.5.14'
+    testImplementation 'org.junit.platform:junit-platform-engine:+'
+    swaggerCodegen 'io.swagger.codegen.v3:swagger-codegen-cli:3.0.36'
+    swaggerCodegen 'org.openapitools:openapi-generator-cli:3.3.4'
+}
+
+group = 'dev.stoat'
+version = '1.0.0-SNAPSHOT'
+description = 'example-java'
+java.sourceCompatibility = JavaVersion.VERSION_1_8
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from(components.java)
+        }
+    }
+}
+
+checkstyle {
+    toolVersion = '10.5.0'
+}
+
+spotbugs {
+    toolVersion = '4.7.3'
+    ignoreFailures = true
+}
+
+spotbugsMain {
+    reports {
+        html {
+            enabled = true
+        }
+    }
+}
+
+javadoc { }
+
+pmd {
+    toolVersion = "6.21.0"
+    rulesMinimumPriority = 5
+    ruleSets = ["category/java/errorprone.xml", "category/java/bestpractices.xml"]
+    ignoreFailures = true
+}
+
+swaggerSources {
+    petstore {
+        inputFile = file('src/main/resources/openapi.yaml')
+        code {
+            language = 'html'
+        }
+    }
+}
+
+jacoco {
+    toolVersion = "0.8.8"
+}
+
+jacocoTestReport {
+    dependsOn test
+    reports {
+        xml.required = false
+        csv.required = false
+        html.outputLocation = layout.buildDirectory.dir('jacocoHtml')
+    }
+}
+
+test {
+    useJUnitPlatform()
+    finalizedBy jacocoTestReport
+}
+
+tasks.named("build") { finalizedBy("javadoc") }
+tasks.named("build") { finalizedBy("htmlDependencyReport") }
+tasks.named("build") { finalizedBy("generateSwaggerCode") }
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+tasks.withType(Checkstyle) {
+    reports {
+        xml.required = false
+        html.required = true
+        html.stylesheet resources.text.fromFile('config/xsl/checkstyle-simple.xsl')
+    }
+}

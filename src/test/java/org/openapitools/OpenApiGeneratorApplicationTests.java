@@ -3,6 +3,7 @@ package org.openapitools;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
@@ -16,8 +17,8 @@ class OpenApiGeneratorApplicationTests {
     @Test
     void compareLists() {
         String[] expected = new String[]{"a", "b", "c"};
-        String[] actual = new String[]{"A", "b", "c"};
-        assertEquals(expected, actual);
+        String[] actual = new String[]{"a", "b", "c"};
+        assertArrayEquals(expected, actual);
     }
 
 }

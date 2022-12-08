@@ -1,0 +1,11 @@
+| category | links |
+| :--- | :--- |
+| **test** | {{#if tasks.tests.static_hosting.link ~}}[ [results]({{ tasks.tests.static_hosting.link }}) ] {{/if ~}}
+{{#if tasks.jacoco.static_hosting.link ~}}[ [coverage]({{ tasks.jacoco.static_hosting.link }}) ] {{/if ~}} |
+| **check** | {{#if tasks.checkstyle.static_hosting.link ~}}[ [checkstyle]({{ tasks.checkstyle.static_hosting.link }}/main.html) ] {{/if ~}}
+{{#if tasks.spotbugs.static_hosting.link ~}}[ [spotbugs]({{ tasks.spotbugs.static_hosting.link }}) ] {{/if ~}}
+{{#if tasks.pmd.static_hosting.link ~}}[ [pmd]({{ tasks.pmd.static_hosting.link }}/main.html) ] {{/if ~}} |
+| **docs** | {{#if tasks.javadoc.static_hosting.link ~}}[ [javadoc]({{ tasks.javadoc.static_hosting.link }}) ] {{/if ~}}
+{{#if tasks.openapi.static_hosting.link ~}}[ [openapi]({{ tasks.openapi.static_hosting.link }}) ] {{/if ~}} |
+| **build** | {{#if tasks.dependencies.static_hosting.link ~}}[ [dependencies]({{ tasks.dependencies.static_hosting.link }})] {{/if ~}}
+{{#if tasks.scan.static_hosting.link ~}}[ [scan]({{ tasks.scan.static_hosting.link }}) ] {{/if ~}} |

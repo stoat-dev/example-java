@@ -17,14 +17,13 @@ gradle.addBuildListener(new BuildAdapter(){
     void settingsEvaluated(Settings settings) {
         super.settingsEvaluated(settings)
 
-        File file = new File("build/gradle-scan/index.html")
-
-        new File(file.getParent()).mkdirs()
+        File file = new File("gradle-scan/index.html")
+        file.getParentFile().mkdirs()
 
         if (settings.pluginManager.hasPlugin("com.gradle.enterprise")) {
             settings.extensions["gradleEnterprise"].buildScan.with {
                 buildScanPublished { buildScan ->
-                    file.write """
+                    file.text = """
                             <!DOCTYPE html>
                             <html>
                               <head>

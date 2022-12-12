@@ -31,4 +31,4 @@ tasks:
     static_hosting:
       path: gradle-scan
   build-time-history:
-    job_runtime:
+    job_runtime: {}

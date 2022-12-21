@@ -1,13 +1,13 @@
 | category | links |
 | :--- | :--- |
-| **test** | {{#if tasks.tests.static_hosting.link ~}}[ [results]({{ tasks.tests.static_hosting.link }}) ] {{/if ~}}
-{{#if tasks.jacoco.static_hosting.link ~}}[ [coverage]({{ tasks.jacoco.static_hosting.link }}) ] {{/if ~}} |
-| **check** | {{#if tasks.checkstyle.static_hosting.link ~}}[ [checkstyle]({{ tasks.checkstyle.static_hosting.link }}) ] {{/if ~}}
-{{#if tasks.spotbugs.static_hosting.link ~}}[ [spotbugs]({{ tasks.spotbugs.static_hosting.link }}) ] {{/if ~}}
-{{#if tasks.pmd.static_hosting.link ~}}[ [pmd]({{ tasks.pmd.static_hosting.link }}) ] {{/if ~}} |
-| **docs** | {{#if tasks.javadoc.static_hosting.link ~}}[ [javadoc]({{ tasks.javadoc.static_hosting.link }}) ] {{/if ~}}
-{{#if tasks.openapi.static_hosting.link ~}}[ [openapi]({{ tasks.openapi.static_hosting.link }}) ] {{/if ~}} |
-| **build** | {{#if tasks.dependencies.static_hosting.link ~}}[ [dependencies]({{ tasks.dependencies.static_hosting.link }})] {{/if ~}}
-{{#if tasks.scan.static_hosting.link ~}}[ [scan]({{ tasks.scan.static_hosting.link }}) ] {{/if ~}} |
+| **test** | {{#if plugins.static_hosting.tests.link ~}}[ [results]({{ plugins.static_hosting.tests.link }}) ] {{/if ~}}
+{{#if plugins.static_hosting.jacoco.link ~}}[ [coverage]({{ plugins.static_hosting.jacoco.link }}) ] {{/if ~}} |
+| **check** | {{#if plugins.static_hosting.checkstyle.link ~}}[ [checkstyle]({{ plugins.static_hosting.checkstyle.link }}) ] {{/if ~}}
+{{#if plugins.static_hosting.spotbugs.link ~}}[ [spotbugs]({{ plugins.static_hosting.spotbugs.link }}) ] {{/if ~}}
+{{#if plugins.static_hosting.pmd.link ~}}[ [pmd]({{ plugins.static_hosting.pmd.link }}) ] {{/if ~}} |
+| **docs** | {{#if plugins.static_hosting.javadoc.link ~}}[ [javadoc]({{ plugins.static_hosting.javadoc.link }}) ] {{/if ~}}
+{{#if plugins.static_hosting.openapi.link ~}}[ [openapi]({{ plugins.static_hosting.openapi.link }}) ] {{/if ~}} |
+| **build** | {{#if plugins.static_hosting.dependencies.link ~}}[ [dependencies]({{ plugins.static_hosting.dependencies.link }})] {{/if ~}}
+{{#if plugins.static_hosting.scan.link ~}}[ [scan]({{ plugins.static_hosting.scan.link }}) ] {{/if ~}} |
 
 {{{ views.plugins.job_runtime.github.chart }}}

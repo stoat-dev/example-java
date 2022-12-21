@@ -2,33 +2,25 @@
 version: 1
 enabled: true
 comment_template_file: ".stoat/comment.hbs"
-tasks:
-  tests:
-    static_hosting:
+plugins:
+  job_runtime:
+    enabled: true
+  static_hosting:
+    tests:
       path: build/reports/tests/test
-  jacoco:
-    static_hosting:
+    jacoco:
       path: build/jacocoHtml
-  checkstyle:
-    static_hosting:
+    checkstyle:
       path: build/reports/checkstyle/main.html
-  spotbugs:
-    static_hosting:
+    spotbugs:
       path: build/reports/spotbugs/main
-  pmd:
-    static_hosting:
+    pmd:
       path: build/reports/pmd/main.html
-  javadoc:
-    static_hosting:
+    javadoc:
       path: build/docs/javadoc
-  openapi:
-    static_hosting:
+    openapi:
       path: build/swagger-code-petstore
-  dependencies:
-    static_hosting:
+    dependencies:
       path: build/reports/project/dependencies
-  scan:
-    static_hosting:
+    scan:
       path: gradle-scan
-  build-time-history:
-    job_runtime: {}

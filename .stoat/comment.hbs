@@ -1,0 +1,13 @@
+| category | links |
+| :--- | :--- |
+| **test** | {{#if plugins.static_hosting.tests.link ~}}[ [results]({{ plugins.static_hosting.tests.link }}) ] {{/if ~}}
+{{#if plugins.static_hosting.jacoco.link ~}}[ [coverage]({{ plugins.static_hosting.jacoco.link }}) ] {{/if ~}} |
+| **check** | {{#if plugins.static_hosting.checkstyle.link ~}}[ [checkstyle]({{ plugins.static_hosting.checkstyle.link }}) ] {{/if ~}}
+{{#if plugins.static_hosting.spotbugs.link ~}}[ [spotbugs]({{ plugins.static_hosting.spotbugs.link }}) ] {{/if ~}}
+{{#if plugins.static_hosting.pmd.link ~}}[ [pmd]({{ plugins.static_hosting.pmd.link }}) ] {{/if ~}} |
+| **docs** | {{#if plugins.static_hosting.javadoc.link ~}}[ [javadoc]({{ plugins.static_hosting.javadoc.link }}) ] {{/if ~}}
+{{#if plugins.static_hosting.openapi.link ~}}[ [openapi]({{ plugins.static_hosting.openapi.link }}) ] {{/if ~}} |
+| **build** | {{#if plugins.static_hosting.dependencies.link ~}}[ [dependencies]({{ plugins.static_hosting.dependencies.link }})] {{/if ~}}
+{{#if plugins.static_hosting.scan.link ~}}[ [scan]({{ plugins.static_hosting.scan.link }}) ] {{/if ~}} |
+
+{{{ views.plugins.job_runtime.github.chart }}}

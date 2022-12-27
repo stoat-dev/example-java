@@ -20,3 +20,7 @@ jobs:
       - name: Build Gradle Project
         run: |
           ./gradlew build --scan
+
+      - name: Run Stoat Action
+        uses: stoat-dev/stoat-action@v0
+        if: always()
